@@ -1,5 +1,3 @@
-#!/usr/bin/python3
-
 import os
 import sys
 import math
@@ -19,8 +17,11 @@ class WikiGraph:
     def load_from_file(self, filename):
         print('Загружаю граф из файла: ' + filename)
 
+
+
         with open(filename) as f:
             (n, _nlinks) = (0, 0) # TODO: прочитать из файла
+
             
             self._titles = []
             self._sizes = array.array('L', [0]*n)
@@ -30,6 +31,19 @@ class WikiGraph:
 
             # TODO: прочитать граф из файла
 
+    def read(self):
+        f = open('wiki_small.txt')
+        amount_article, amount_link = f.readline().split()
+        amount_article, amount_link = int(amount_article), int(amount_link)
+        for line in range(amount_article):
+            A = f.readline()
+            a, b, c = f.readline().split()
+            size, flag, links = int(a), int(b), int(c)
+            for one in range(links):
+                one = f.readline()
+
+
+        print(amount_article, amount_link)
         print('Граф загружен')
 
     def get_number_of_links_from(self, _id):
@@ -73,3 +87,5 @@ if __name__ == '__main__':
         sys.exit(-1)
 
     # TODO: статистика и гистограммы
+
+    print(WikiGraph.read)
